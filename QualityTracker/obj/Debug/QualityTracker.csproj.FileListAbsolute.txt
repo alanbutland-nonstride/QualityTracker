@@ -1,0 +1,15 @@
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\bin\Debug\QualityTracker.exe.config
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\bin\Debug\QualityTracker.exe
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\bin\Debug\QualityTracker.pdb
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker.csprojAssemblyReference.cache
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\MainWindow.g.cs
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\App.g.cs
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker_MarkupCompile.cache
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker_MarkupCompile.lref
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\MainWindow.baml
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker.g.resources
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker.Properties.Resources.resources
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker.csproj.GenerateResource.cache
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker.csproj.CoreCompileInputs.cache
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker.exe
+C:\Users\AT200378\Documents\GitHub\QualityTracker\QualityTracker\obj\Debug\QualityTracker.pdb
