@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace QualityTracker
 {
@@ -43,37 +44,49 @@ namespace QualityTracker
 
             foreach (Directorate directorate in Globals.trackerOptions.directorates)
             {
-                cmbDirectorates.Items.Add(directorate.directorateName);
+                cmbDirectorates.Items.Add(directorate.directorate_text);
                 directorateList.Add(directorate);
             }
-            cmbDirectorates.SelectedIndex = 0;
+            if (cmbDirectorates.Items.Count > 0)
+            {
+                cmbDirectorates.SelectedIndex = 0;
+                PopulateRegions(directorateList[0]);
+            }
         }
         private void PopulateRegions(Directorate directorate)
         {
             cmbRegions.Items.Clear();
             regionList = new List<Region>();
-
             foreach (Region region in Globals.trackerOptions.regions)
             {
-                if(region.directorateID == directorate.directorateID)
+                if(region.directorate_id == directorate.directorate_id)
                 {
-                    cmbRegions.Items.Add(region.regionName);
+                    cmbRegions.Items.Add(region.region_text);
                     regionList.Add(region);
                 }
+            }
+            if(cmbRegions.Items.Count > 0)
+            {
+                cmbRegions.SelectedIndex = 0;
+                PopulateSites(regionList[0]);
             }
         }
         private void PopulateSites(Region region)
         {
             cmbSites.Items.Clear();
             siteList = new List<Site>();
-
             foreach (Site site in Globals.trackerOptions.sites)
             {
-                if (site.regionID == region.regionID)
+                Debug.WriteLine(site.site_text + ", " + site.region_id);
+                if (site.region_id == region.region_id)
                 {
-                    cmbSites.Items.Add(site.siteName);
+                    cmbSites.Items.Add(site.site_text);
                     siteList.Add(site);
                 }
+            }
+            if(cmbSites.Items.Count > 0)
+            {
+                cmbSites.SelectedIndex = 0;
             }
         }
 
@@ -81,19 +94,28 @@ namespace QualityTracker
         {
             if(cmbDirectorates.SelectedIndex >= 0)
             {
-                Directorate directorate = directorateList[cmbDirectorates.SelectedIndex];
-                PopulateRegions(directorate);
-                cmbSites.Items.Clear();
-                siteList.Clear();
+                Directorate dir = directorateList[cmbDirectorates.SelectedIndex];
+                PopulateRegions(dir);
+                WriteStatus(dir.directorate_text);
             }
         }
+
         private void cmbRegions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbRegions.SelectedIndex >= 0)
             {
                 Region region = regionList[cmbRegions.SelectedIndex];
                 PopulateSites(region);
-                WriteStatus(region.regionName);
+                WriteStatus(region.region_text);
+            }
+        }
+
+        private void cmbSites_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbSites.SelectedIndex >=0)
+            {
+                Site site = siteList[cmbSites.SelectedIndex];
+                WriteStatus(site.site_text);
             }
         }
 
@@ -101,11 +123,11 @@ namespace QualityTracker
         {
             stStatusBar.Items.Clear();
             stStatusBar.Items.Add("Exit");
-            //System.Windows.Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
         private void btnReport_Click(object sender, RoutedEventArgs e)
         {
-            Pages.SelectedIndex = 1;          
+            Pages.SelectedIndex = 1;
         }
         private void btnFLMCheck_Click(object sender, RoutedEventArgs e)
         {
@@ -118,5 +140,12 @@ namespace QualityTracker
             stStatusBar.Items.Clear();
             stStatusBar.Items.Add(txt);
         }
+
+        private void TestButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Clicked");
+        }
+
+
     }
 }

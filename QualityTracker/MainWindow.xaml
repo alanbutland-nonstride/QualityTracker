@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QualityTracker"
         mc:Ignorable="d"
-        MinWidth="550"
-        MinHeight="400"
-        Title="Quality Tracker" Height="400" Width="600">
+          Height="600"
+          Width="800"
+          WindowStartupLocation="CenterScreen"
+          Icon="images/icon.ico"
+        Title="Quality Tracker" ResizeMode="NoResize">
 
     <Grid>
         <DockPanel>
-            <Menu DockPanel.Dock="Top" VerticalAlignment="Top" Height="400">
+            <Menu DockPanel.Dock="Top" VerticalAlignment="Top" Height="400" Margin="10,10,0,0">
+                
                 <Menu.Resources>
                     <Style TargetType="MenuItem">
                         <Setter Property="FontSize" Value="14"></Setter>
@@ -22,7 +25,8 @@
                         <Setter Property="Width" Value="Auto"></Setter>
                     </Style>
                 </Menu.Resources>
-                <MenuItem Header="_File" Width="80">
+                
+                <MenuItem Header="_File" Name ="qt_menu"  Width="80">
                     <MenuItem Header="_Exit" Name="btnExit" Click="btnExit_Click"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Reports" Width="80">
@@ -61,7 +65,7 @@
             </Menu>
         </DockPanel>
 
-        <TabControl Name="Pages" Margin="10,41,10.286,39.714" TabStripPlacement="Left" SelectedIndex="2">
+        <TabControl Name="Pages" Margin="10,40,10,30" TabStripPlacement="Left" SelectedIndex="2">
             <TabItem Header="Startup" Visibility="Collapsed">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
@@ -72,27 +76,78 @@
                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.2*"></RowDefinition>
-                        <RowDefinition Height="0.2*"></RowDefinition>
-                        <RowDefinition Height="0.2*"></RowDefinition>
-                        <RowDefinition Height="0.2*"></RowDefinition>
-                        <RowDefinition Height="0.2*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Column="0" Grid.Row="0" Stretch="UniformToFill" Fill="#9E3039" VerticalAlignment="top" Stroke="Black" StrokeThickness="0"/>
                     <Rectangle Grid.Column="0" Grid.Row="1" Stretch="UniformToFill" Fill="#9E3039" VerticalAlignment="top" Stroke="Black" StrokeThickness="0"/>
                     <Rectangle Grid.Column="1" Grid.Row="2" Stretch="UniformToFill" Fill="#9E3039" VerticalAlignment="top" Stroke="Black" StrokeThickness="0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Checks" Visibility="Collapsed">
-                <Grid Background="#FFE5E5E5">
-                    <ComboBox Name="cmbDirectorates" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="cmbDirectorates_SelectionChanged"/>
-                    <ComboBox Name="cmbRegions" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="cmbRegions_SelectionChanged"/>
-                    <ComboBox Name="cmbSites" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Width="200"/>
+            <TabItem Header="Checks1" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="0.5*" />
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" BorderThickness="5" BorderBrush="Gray" CornerRadius="5">
+                        <Grid Background="#9B6E51">
+                            <Grid.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontFamily" Value="Segio UI"></Setter>
+                                    <Setter Property="FontSize" Value="14"></Setter>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                                    <Setter Property="HorizontalContentAlignment" Value="Right"></Setter>
+                                </Style>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="Height" Value="30"></Setter>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.05*" />
+                                <ColumnDefinition Width="0.125*" />
+                                <ColumnDefinition Width="0.325*" />
+                                <ColumnDefinition Width="0.125*" />
+                                <ColumnDefinition Width="0.325*" />
+                                <ColumnDefinition Width="0.05*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*" />
+                                <RowDefinition Height="0.2*" />
+                                <RowDefinition Height="0.2*" />
+                                <RowDefinition Height="0.2*" />
+                                <RowDefinition Height="0.2*" />
+                            </Grid.RowDefinitions>
+                            <Label Name="lblDirectorate" Grid.Row="0" Grid.Column="1" Content="Directorate" />
+                            <ComboBox Name="cmbDirectorates" Grid.Row="0" Grid.Column="2"  SelectionChanged="cmbDirectorates_SelectionChanged" />
+                            <Label Name="lblRegion" Grid.Row="1" Grid.Column="1" Content="Region" />
+                            <ComboBox Name="cmbRegions" Grid.Row="1" Grid.Column="2" SelectionChanged="cmbRegions_SelectionChanged"/>
+                            <Label Name="lblSite" Grid.Row="2" Grid.Column="1" Content="Site" />
+                            <ComboBox Name="cmbSites" Grid.Row="2" Grid.Column="2" SelectionChanged="cmbSites_SelectionChanged" />
+                            <Label Name="lblOps" Grid.Row="3" Grid.Column="1" Content="Ops Span" />
+                            <ComboBox Name="cmbOps" Grid.Row="3" Grid.Column="2" />
+                            <Label Name="lblTeam" Grid.Row="4" Grid.Column="1" Content="Team" />
+                            <ComboBox Name="cmbTeams" Grid.Row="4" Grid.Column="2" />
+                            <Label Name="lblPID" Grid.Row="0" Grid.Column="3" Content="PID" />
+                            <TextBox Name="txtPID" Grid.Row="0" Grid.Column="4" Height="30" />
+                            <Label Name="lblName" Grid.Row="1" Grid.Column="3" Content="Name" />
+                            <TextBox Name="txtName" Grid.Row="1" Grid.Column="4" Height="30" />
+
+                        </Grid>
+                    </Border>
+                    <Border Grid.Row="1" BorderThickness="5" BorderBrush="Gray" CornerRadius="5">
+                        <Grid Background="#D9AC6D" />
+                    </Border>
                 </Grid>
             </TabItem>
         </TabControl>
 
-        <DockPanel Width="300" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <DockPanel Width="800" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left">
             <StatusBar DockPanel.Dock="Bottom" Name="stStatusBar"/>
         </DockPanel>
     </Grid>
